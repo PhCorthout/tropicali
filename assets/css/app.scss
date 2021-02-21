@@ -1,0 +1,57 @@
+@import "reset";
+@import "typography";
+
+
+// Variables
+
+$primary-color: #ca774a;
+$body-font: "Jost";
+$mq-large: 800px;
+$mq-medium: 600px;
+
+
+// Mixins
+
+@mixin vertically-middle() {
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin mq($width) {
+	@media (max-width: $width) {
+		@content;
+	}
+}
+
+
+// Basic styles
+
+body {
+    background-color: $primary-color;
+    color: #ffffff;
+    font-family: $body-font;
+    font-size: 24px;
+    line-height: 1.5;
+
+    min-height: 100vh;
+    @include vertically-middle();
+
+    @include mq($mq-medium) {
+        height: 100%;
+    }
+}
+
+section {
+    width: 500px;
+
+    @include mq($mq-medium) {
+        width: 80%;
+        font-size: 16px;
+    }
+
+    p {
+        margin: 24px 0 0 0;
+    }
+}
